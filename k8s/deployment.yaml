@@ -1,0 +1,20 @@
+# Exemple de deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mon-projet-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: mon-projet
+  template:
+    metadata:
+      labels:
+        app: mon-projet
+    spec:
+      containers:
+      - name: mon-projet-container
+        image: ghcr.io/OWNER/REPO:latest
+        ports:
+        - containerPort: 3000
